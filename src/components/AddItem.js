@@ -18,9 +18,9 @@ function AddItem ( { addItem }) {
         const id = uuid();
         event.preventDefault();
         if (item.text.trim()) {
-            setItem({ ...item, text: ""});
             onSubmitItem({ ...item, id});
             addItem({ ...item, id});
+            setItem({ ...item, text: ""});
         }
     };
 
@@ -38,11 +38,6 @@ function AddItem ( { addItem }) {
             .then(response => response.json())
             .catch(err => console.log('error'))
     }
-
-    // const post = async (data) => {
-    //     const { url } = data;
-
-    // }
 
     const textLeft = 300 - item.text.length;
     return(
