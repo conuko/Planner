@@ -19,7 +19,21 @@ function App () {
 
   const removeItem = (id) => {
     setItems(items.filter(item => item.id !== id));
-  }
+  };
+
+  const toggleItem = (id) => {
+    setItems(
+      items.map(item => {
+        if (item.id === id) {
+          return {
+            ...item,
+            completed: !item.completed
+          }
+        }
+        return item;
+      })
+    );
+  };
   
   return (
     <div className="App">
@@ -28,6 +42,7 @@ function App () {
         <ItemList
           items={items}
           removeItem={removeItem}
+          toggleItem={toggleItem}
         />
       </header>
     </div>

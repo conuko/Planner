@@ -5,6 +5,7 @@ function AddItem ( { addItem }) {
     const [item, setItem] = useState({
         id: "",
         text: "",
+        completed: false
     });
 
     const handleInputChange = (event) => {
@@ -37,7 +38,7 @@ function AddItem ( { addItem }) {
         })
             .then(response => response.json())
             .catch(err => console.log('error'))
-    }
+    };
 
     const textLeft = 300 - item.text.length;
     return(

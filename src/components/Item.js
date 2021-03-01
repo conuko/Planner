@@ -1,6 +1,10 @@
 import React from 'react';
 
-function Item ({ item, removeItem }) {
+function Item ({ item, removeItem, toggleItem }) {
+
+    const handleToggleClick = () => {
+        toggleItem(item.id)
+    }
 
     const handleRemoveClick = () => {
         onRemoveItem(item.id);
@@ -22,7 +26,7 @@ function Item ({ item, removeItem }) {
 
     return(
         <div>
-            <li>
+            <li checked={item.completed} onClick={handleToggleClick} style={{textDecoration: item.completed ? 'line-through' : null}}>
                 {item.text}
             </li>
             <button onClick={handleRemoveClick}>X</button>
