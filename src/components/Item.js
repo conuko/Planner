@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { Checkbox, IconButton, ListItem, Typography } from '@material-ui/core';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 function Item ({ item, removeItem, toggleItem }) {
 
@@ -48,15 +50,23 @@ function Item ({ item, removeItem, toggleItem }) {
 
 
     return(
-        <div>
-            <li
-            checked={item.completed}
-            onClick={handleToggleClick}
-            style={{textDecoration: item.completed ? 'line-through' : null}}>
+        <ListItem style={{display: 'flex'}}>
+            <Checkbox
+                checked={item.completed}
+                onClick={handleToggleClick}
+            />
+            <Typography
+                variant='body1'
+                style={{
+                    textDecoration: item.completed ? 'line-through' : null
+                }}
+                >
                 {item.text}
-            </li>
-            <button onClick={handleRemoveClick}>X</button>
-        </div>
+            </Typography>
+            <IconButton onClick={handleRemoveClick}>
+                <DeleteForeverIcon />
+            </IconButton>
+        </ListItem>
     );
 }
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {v4 as uuid} from 'uuid';
+import { Button, TextField } from '@material-ui/core';
 
 function AddItem ( { addItem }) {
     const [item, setItem] = useState({
@@ -47,9 +48,8 @@ function AddItem ( { addItem }) {
     const textLeft = 300 - item.text.length;
     return(
         <form className="item-form" onSubmit={handleSubmit}>
-            <textarea
+            <TextField
                 placeholder="What's hack'n?"
-                label="item"
                 name="item"
                 type="text"
                 value={item.text}
@@ -61,12 +61,12 @@ function AddItem ( { addItem }) {
                     {textLeft}
                 </div>
             )}
-            <button
+            <Button
                 type="submit"
                 disabled={item.text === ''}
-                >
-                    SUBMIT
-                </button>
+            >
+                SUBMIT
+            </Button>
         </form>
     );
 }

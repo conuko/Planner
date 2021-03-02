@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import AddItem from './components/AddItem';
 import ItemList from './components/ItemList';
+import './App.css';
+import { Typography } from '@material-ui/core';
 
 function App () {
   const [items, setItems] = useState([]);
@@ -38,14 +40,15 @@ function App () {
   
   return (
     <div className="App">
-      <header className="App-header">
-        <AddItem addItem={addItem}/>
-        <ItemList
-          items={items}
-          removeItem={removeItem}
-          toggleItem={toggleItem}
-        />
-      </header>
+      <Typography style={{ padding: 16 }} variant='h1'>
+        Planner
+      </Typography>
+      <AddItem addItem={addItem}/>
+      <ItemList
+        items={items}
+        removeItem={removeItem}
+        toggleItem={toggleItem}
+      />
     </div>
   );
 }

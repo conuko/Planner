@@ -1,9 +1,10 @@
 import React from 'react';
 import Item from './Item';
+import { List } from '@material-ui/core';
 
 function ItemList ({ items, removeItem, toggleItem }) {
     return(
-        <ul>
+        <List>
             {items.map(item => (
                 <Item 
                     key={item.id}
@@ -12,7 +13,7 @@ function ItemList ({ items, removeItem, toggleItem }) {
                     toggleItem={toggleItem}
                 />
             ))}     
-        </ul>
+        </List>
     )
 }
 
