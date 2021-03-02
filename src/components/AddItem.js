@@ -19,13 +19,16 @@ function AddItem ( { addItem }) {
         const id = uuid();
         event.preventDefault();
         if (item.text.trim()) {
-            onSubmitItem({ ...item, id});
+            // function to add item to the server/database:
+            onAddItem({ ...item, id});
+            // callback function to add item to the state:
             addItem({ ...item, id});
+            // sets the form text back to empty, after the item was added to the "items" state via the "addItem" callback function:
             setItem({ ...item, text: ""});
         }
     };
 
-    const onSubmitItem = (item) => {
+    const onAddItem = (item) => {
         fetch('http://localhost:3000/', {
             method: 'POST',
             headers: {
@@ -33,7 +36,8 @@ function AddItem ( { addItem }) {
             },
             body: JSON.stringify({
                 id: item.id,
-                text: item.text
+                text: item.text,
+                //completed: item.completed
             }),
         })
             .then(response => response.json())

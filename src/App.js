@@ -13,14 +13,15 @@ function App () {
       })
   }, []);
 
+  // callback function to add item to the items state:
   const addItem = (item) => {
     setItems([item, ...items]);
   };
-
+  // callback function to remove item from the items state:
   const removeItem = (id) => {
     setItems(items.filter(item => item.id !== id));
   };
-
+  // callback function to toggle item at the items state:
   const toggleItem = (id) => {
     setItems(
       items.map(item => {
